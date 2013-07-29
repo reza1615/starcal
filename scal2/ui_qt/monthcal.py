@@ -17,7 +17,7 @@
 # Also avalable in /usr/share/common-licenses/GPL on Debian systems
 # or /usr/share/licenses/common/GPL3/license.txt on ArchLinux
 
-from time import time
+from time import time as now
 import sys, os
 from os.path import join, isfile
 
@@ -333,7 +333,7 @@ class MonthCal(qt.QWidget, MainWinItem):
         self.onDateChange()
     def keyPressEvent(self, event):
         k = event.key()
-        print time(), 'MonthCal.keyPressEvent', k, hex(k)
+        print now(), 'MonthCal.keyPressEvent', k, hex(k)
         if k==qc.Qt.Key_Up:
             self.jdPlus(-7)
         elif k==qc.Qt.Key_Down:
@@ -371,7 +371,7 @@ class MonthCal(qt.QWidget, MainWinItem):
                 self.emit(qc.SIGNAL('popup-menu-main'), *self.getMainMenuPos())
         else:
             event.ignore() ## I dont want the event. Propagate to the parent widget.
-            #print time(), 'MonthCal.keyPressEvent', hex(k)
+            #print now(), 'MonthCal.keyPressEvent', hex(k)
             return
         event.accept() ## I want the event. Do not propagate to the parent widget.
     def mousePressEvent(self, event):

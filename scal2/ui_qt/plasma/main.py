@@ -24,7 +24,9 @@
 import sys, os
 from os.path import dirname, join
 from math import ceil
-from time import time, localtime
+from time import localtime
+from time import time as now
+
 from time import strftime ## FIXME replcae with my own format_time
 
 rootDir = '/usr/share/starcal2'
@@ -98,7 +100,7 @@ class PClockLabel(PyKDE4.plasma.Plasma.Label):
         self.update()
     def update(self):
         if self.running:
-            self.timer.singleShot(int(1000*(1-time()%1)), self.update)
+            self.timer.singleShot(int(1000*(1-now()%1)), self.update)
             try:
                 self.setText(strftime(self.format).decode('utf-8'))
             except:

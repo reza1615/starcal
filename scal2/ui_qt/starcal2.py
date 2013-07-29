@@ -26,7 +26,9 @@ if sys.version_info[0] != 2:
 
 import os
 from os.path import join, dirname, isfile, isdir
-from time import time, localtime
+from time import localtime
+from time import time as now
+
 from subprocess import Popen
 
 sys.path.insert(0, dirname(dirname(dirname(__file__))))
@@ -80,7 +82,7 @@ core.COMMAND = 'starcal2-qt'
 ui.uiName = 'qt'
 
 def liveConfChanged():
-    tm = time()
+    tm = now()
     if tm-ui.lastLiveConfChangeTime > 0.5:
         timer = qc.QTimer()
         timer.connect(timer, qc.SIGNAL('timeout()'), ui.saveLiveConfLoop)
@@ -283,7 +285,7 @@ class IntLabel(qt.QLabel):## label_id is the same calendar mode for a year label
     def upArrowRemain(self):
         if self._remain != -1:
             return
-        t = time()
+        t = now()
         if t-self.etime<ui.labelMenuDelay-0.02:
             if self.step>1:
                 self.step = 0
@@ -300,7 +302,7 @@ class IntLabel(qt.QLabel):## label_id is the same calendar mode for a year label
     def downArrowRemain(self):
         if self._remain != 1:
             return
-        t = time()
+        t = now()
         if t-self.etime<ui.labelMenuDelay-0.02:
             if self.step>1:
                 self.step = 0
@@ -315,7 +317,7 @@ class IntLabel(qt.QLabel):## label_id is the same calendar mode for a year label
             self.etime = t
             qc.QTimer.singleShot(int(ui.labelMenuDelay*1000), self.downArrowRemain)
     def arrowRemain(self, plus):
-        t = time()
+        t = now()
         if self._remain!=plus:
             return False
         if t-self.etime<ui.labelMenuDelay-0.02:
@@ -501,8 +503,8 @@ class FClockLabel(qt.QLabel):
         self.update()
     def update(self):
         if self.running:
-            ##timeout_add(int(1000*(1-time()%1)), self.update)
-            self.timer.singleShot(int(1000*(1-time()%1)), self.update)
+            ##timeout_add(int(1000*(1-now()%1)), self.update)
+            self.timer.singleShot(int(1000*(1-now()%1)), self.update)
             try:
                 self.setText(strftime(self.format).decode('utf-8'))
             except:
@@ -1226,7 +1228,7 @@ class MainWin(qt.QMainWindow):
         self.onDateChange()
     def keyPressEvent(self, event):
         k = event.key()
-        #print time(), 'MainWin.keyPressEvent', k, hex(k)
+        #print now(), 'MainWin.keyPressEvent', k, hex(k)
         ## file:///usr/share/doc/python-qt4-doc/html/qt.html#Key-enum
         ## file:///usr/share/doc/python-qt4-doc/html/qkeyevent.html
         if k==qc.Qt.Key_Escape:

@@ -18,7 +18,8 @@
 # or /usr/share/licenses/common/LGPL/license.txt on ArchLinux
 
 import sys, os
-from time import time, localtime
+from time import localtime
+from time import time as now
 
 from math import ceil
 iceil = lambda f: int(ceil(f))
@@ -334,7 +335,7 @@ class TimerBox(TimeBox):
         #self.tPlus = -1 # timer plus (step)
         #self.elapse = 0
         #########
-        self.tOff = time()*self.tPlus - self.getSeconds()
+        self.tOff = now()*self.tPlus - self.getSeconds()
         self.setEditable(False)
         self._timerUpdate()
     def timerStop(self):
@@ -343,7 +344,7 @@ class TimerBox(TimeBox):
     def _timerUpdate(self):
         if not self.timer:
             return
-        sec = int(time()*self.tPlus - self.tOff)
+        sec = int(now()*self.tPlus - self.tOff)
         self.setSeconds(sec)
         if self.tPlus*(sec-self.elapse) >= 0:
             self.emit(qc.SIGNAL('time-elapse'))
@@ -360,7 +361,7 @@ class TimerBox(TimeBox):
         self.setEditable(True)
     def _clockUpdate(self):
         if self.clock:
-            self.qtimer.singleShot(iceil(1000*(1-time()%1)), self._clockUpdate)
+            self.qtimer.singleShot(iceil(1000*(1-now()%1)), self._clockUpdate)
             self.setTime(*localtime()[3:6])
 
 class ExtTimerBox(qt.QWidget):## FIXME

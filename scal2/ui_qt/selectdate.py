@@ -17,9 +17,6 @@
 # Also avalable in /usr/share/common-licenses/GPL on Debian systems
 # or /usr/share/licenses/common/GPL3/license.txt on ArchLinux
 
-#import time
-#print time.time(), __file__
-
 import os, sys
 
 from scal2.locale_man import tr as _
@@ -283,7 +280,7 @@ class SelectDateDialog(qt.QWidget):
 
 '''
 if __name__=='__main__':
-    import time
+    from time import localtime
     from scal2.locale_man import rtl
     app = qt.QApplication(sys.argv)
     if rtl:
@@ -294,7 +291,7 @@ if __name__=='__main__':
         dialog.destroy()
         sys.exit(0)
     dialog.connect(dialog, qc.SIGNAL('response-date'), response)
-    dialog.show(0, *time.localtime()[:3])
+    dialog.show(0, *localtime()[:3])
     sys.exit(app.exec_())
 '''
 

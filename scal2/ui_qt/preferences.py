@@ -18,9 +18,6 @@
 # or /usr/share/licenses/common/GPL3/license.txt on ArchLinux
 
 
-import time
-#print time.time(), __file__
-
 import sys, os
 from os.path import dirname, join, isabs
 
