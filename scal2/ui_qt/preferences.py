@@ -1297,7 +1297,7 @@ class PrefDialog(qt.QWidget):
                                  lambda: item.widget.setEnabled(cbGrid.checkState()==qc.Qt.Checked))
         ########
         hbox.addStretch()
-        item = CheckPrefItem(ui, 'fontCustomEnable', _('Application font'), fontToStr(ui.fontDefault))
+        item = CheckPrefItem(ui, 'fontCustomEnable', _('Application Font'), fontToStr(ui.fontDefault))
         self.uiPrefItems.append(item)
         hbox.addWidget(item.widget)
         enableItem = item
