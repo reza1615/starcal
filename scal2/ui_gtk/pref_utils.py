@@ -523,7 +523,6 @@ class AICalsPrefItem():
         ########
         treev = ActiveCalsTreeView()
         treev.connect('row-activated', self.activeTreevRActivate)
-        #treev.connect('focus-in-event', self.activeTreevFocus)
         treev.get_selection().connect('changed', self.activeTreevSelectionChanged)
         ###
         self.widget.pack_start(treev.makeSwin(), 0, 0)
@@ -556,7 +555,6 @@ class AICalsPrefItem():
         ########
         treev = InactiveCalsTreeView()
         treev.connect('row-activated', self.inactiveTreevRActivate)
-        #treev.connect('focus-in-event', self.inactiveTreevFocus)
         treev.get_selection().connect('changed', self.inactiveTreevSelectionChanged)
         ###
         self.widget.pack_start(treev.makeSwin(), 0, 0)
@@ -578,12 +576,6 @@ class AICalsPrefItem():
             )
             tb.action = 'inactivate' if isRight else 'activate'
         tb.show_all()
-    def activeTreevFocus(self, treev, gevent=None):
-        self.setLeftRight(True)
-        #self.inactiveTreev.set_cursor(None)## FIXME
-    def inactiveTreevFocus(self, treev, gevent=None):
-        self.setLeftRight(False)
-        #self.activeTreev.set_cursor(None)## FIXME
     def leftRightClicked(self, obj=None):
         tb = self.leftRightButton
         if tb.action == 'activate':
@@ -598,10 +590,8 @@ class AICalsPrefItem():
     def getCurrentTreeview(self):
         tb = self.leftRightButton
         if tb.action == 'activate':
-        #if self.activeTreev.has_focus():
             return self.activeTreev
         elif tb.action == 'inactivate':
-        #elif self.inactiveTreev.has_focus():
             return self.inactiveTreev
         else:
             return
