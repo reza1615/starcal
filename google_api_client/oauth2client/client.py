@@ -56,13 +56,20 @@ try:
 except ImportError:
   from cgi import parse_qsl
 
-# Determine if we can write to the file system, and if we can use a local file
-# cache behing httplib2.
-if hasattr(os, 'tempnam'):
-  # Put cache file in the director '.cache'.
-  CACHED_HTTP = httplib2.Http('.cache')
+####################################################
+
+from os.path import join
+
+if os.sep=='/':
+    homeDir = os.getenv('HOME')
+    cacheDir = join(homeDir, '.cache')
 else:
-  CACHED_HTTP = httplib2.Http()
+    homeDir = os.getenv('HOMEPATH')
+    cacheDir = join(homeDir, 'Cache')
+
+CACHED_HTTP = httplib2.Http(cacheDir)
+
+####################################################
 
 logger = logging.getLogger(__name__)
 
