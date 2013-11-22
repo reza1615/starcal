@@ -62,7 +62,6 @@ getGroupRow = lambda group, rowBgColor: (
 )
 
 
-
 class EventWidget(gtk.VBox):
     def __init__(self, event):
         gtk.VBox.__init__(self)
