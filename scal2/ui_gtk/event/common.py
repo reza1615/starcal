@@ -200,6 +200,7 @@ class FilesBox(gtk.VBox):
             ),
             title=_('Add File'),
         )
+        fcd.set_local_only(True)
         fcd.connect('response', lambda w, e: fcd.hide())
         if fcd.run() == gtk.RESPONSE_OK:
             fpath = fcd.get_filename()
