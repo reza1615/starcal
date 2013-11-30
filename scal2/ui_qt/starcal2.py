@@ -21,7 +21,7 @@
 import sys
 
 if sys.version_info[0] != 2:
-    print 'Run this script with Python 2.x'
+    print('Run this script with Python 2.x')
     sys.exit(1)
 
 import os

@@ -138,7 +138,7 @@ class StarCalendarScreenlet(screenlets.Screenlet):
                 self.__buttons_alpha = 0
                 self.update()
     def on_init (self):
-        print "Screenlet has been initialized."
+        print("Screenlet has been initialized.")
         # add default menuitems
         self.add_default_menuitems()
 

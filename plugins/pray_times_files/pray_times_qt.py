@@ -84,7 +84,7 @@ class LocationDialog(qt.QDialog):
                             float(lng)
                         ))
                     else:
-                        print country, p
+                        print(country, p)
                 else:
                     country = p[1]
 
@@ -239,7 +239,7 @@ class LocationDialog(qt.QDialog):
                     if r>=mr:
                         break
     def entryChanged(self, entry):
-        print 'entryChanged'
+        print('entryChanged')
         self.updateList(entry.getText())
         qt.QLineEdit.changeEvent(entry)
     def run(self):

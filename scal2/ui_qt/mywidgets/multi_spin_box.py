@@ -36,9 +36,9 @@ qloc.setNumberOptions(qc.QLocale.OmitGroupSeparator)
 def myRaise():
     i = sys.exc_info()
     try:
-        print('line %s: %s: %s'%(i[2].tb_lineno, i[0].__name__, i[1]))
+        print(('line %s: %s: %s'%(i[2].tb_lineno, i[0].__name__, i[1])))
     except:
-        print i
+        print(i)
 
 
 class MultiSpinBox(qt.QAbstractSpinBox):

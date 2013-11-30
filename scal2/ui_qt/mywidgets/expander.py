@@ -53,7 +53,7 @@ class Expander(qt.QTreeWidget):
             self.connect(self, qc.SIGNAL('itemExpanded(QTreeWidgetItem *)'), onExpanderChanged)
     def addWidget(self, widget):
         if self.childWidget!=None:
-            print 'Only one widget could be added to Expander!'
+            print('Only one widget could be added to Expander!')
             return
         widget.setParent(self)
         self.childItem = qt.QTreeWidgetItem(qt.QTreeWidgetItem.UserType)

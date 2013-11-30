@@ -146,7 +146,7 @@ class AboutDialog(qt.QWidget):
         #vbox.setAlignment(qc.Qt.AlignHCenter)
         self.setLayout(vbox)
     def show(self):
-        print 'show()'
+        print('show()')
         self.make_dialog()
         qt.QWidget.show(self)
     def close(self):##????????????

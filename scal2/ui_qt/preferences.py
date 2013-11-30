@@ -277,7 +277,7 @@ class ColorButton(qt.QPushButton):
             try:
                 self.setQColor(qColorFromHtml(text))
             except:
-                print 'droped invalid text "%s"'%text
+                print('droped invalid text "%s"'%text)
                 event.ignore()
             else:
                 event.accept()
@@ -402,7 +402,7 @@ class PrefItem():
     def updateVar(self):
         if self.module==None:
             if self.varName=='':
-                print 'PrefItem.updateVar: this PrefItem instance has no reference variable to write to!'
+                print('PrefItem.updateVar: this PrefItem instance has no reference variable to write to!')
             else:
                 exec('global %s;%s=%r'%(self.varName, self.varName, self.get()))
         else:
@@ -411,7 +411,7 @@ class PrefItem():
     def updateWidget(self):
         if self.module==None:
             if self.varName=='':
-                print 'PrefItem.updateWidget: this PrefItem instance has no reference variable to read from!'
+                print('PrefItem.updateWidget: this PrefItem instance has no reference variable to read from!')
             else:
                 self.set(eval(self.varName))
         else:
@@ -511,7 +511,7 @@ class LangPrefItem(PrefItem):
             try:
                 i = langDict.keyList.index(value)
             except ValueError:
-                print 'language %s in not in list!'%value
+                print('language %s in not in list!'%value)
                 self.widget.setCurrentIndex(0)
             else:
                 self.widget.setCurrentIndex(i+1)
@@ -542,7 +542,7 @@ class CheckPrefItem(PrefItem):
             try:
                 w.setToolTip(tooltip)
             except:
-                print 'tooltip', repr(tooltip), type(tooltip)
+                print('tooltip', repr(tooltip), type(tooltip))
         self.widget = w
         self.widget.setSizePolicy(qt.QSizePolicy.Minimum, qt.QSizePolicy.Fixed)
         self.get = lambda: w.checkState()==qc.Qt.Checked
@@ -1155,13 +1155,13 @@ class NothingObject(object):
     def __getattribute__(self, attr):
         if attr in ('__call__', '__setattr__'):
             return object.__getattribute__(self, attr)
-        print 'NothingObject.__getattribute__(%r)'%attr
+        print('NothingObject.__getattribute__(%r)'%attr)
         #return object.__getattribute__(self, 'defaultValue')
         return object.__getattribute__(self, 'foo_callable')
     def __setattr__(self, attr, value):
-        print 'NothingObject.__setattr__(%r, %r)'%(attr, value)
+        print('NothingObject.__setattr__(%r, %r)'%(attr, value))
     def __call__(self, *args, **kwargs):
-        print 'NothingObject.__call__'
+        print('NothingObject.__call__')
     def foo_callable(self, *args, **kwargs):
         pass
 
@@ -1763,7 +1763,7 @@ class PrefDialog(qt.QWidget):
             try:
                 item.updateVar()
             except:
-                print item.varName
+                print(item.varName)
         ###### Plugin Manager
         index = []
         treev = self.plugTreev

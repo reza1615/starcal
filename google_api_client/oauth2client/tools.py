@@ -120,14 +120,14 @@ def run(flow, storage):
     oauth_callback = 'oob'
   authorize_url = flow.step1_get_authorize_url(oauth_callback)
 
-  print 'Go to the following link in your browser:'
-  print authorize_url
-  print
+  print('Go to the following link in your browser:')
+  print(authorize_url)
+  print()
   if FLAGS.auth_local_webserver:
-    print 'If your browser is on a different machine then exit and re-run this'
-    print 'application with the command-line parameter '
-    print '--noauth_local_webserver.'
-    print
+    print('If your browser is on a different machine then exit and re-run this')
+    print('application with the command-line parameter ')
+    print('--noauth_local_webserver.')
+    print()
 
   code = None
   if FLAGS.auth_local_webserver:
@@ -137,7 +137,7 @@ def run(flow, storage):
     if 'code' in httpd.query_params:
       code = httpd.query_params['code']
     else:
-      print 'Failed to find "code" in the query parameters of the redirect.'
+      print('Failed to find "code" in the query parameters of the redirect.')
       sys.exit('Try running with --noauth_local_webserver.')
   else:
     code = raw_input('Enter verification code: ').strip()
@@ -149,6 +149,6 @@ def run(flow, storage):
 
   storage.put(credential)
   credential.set_store(storage)
-  print 'Authentication successful.'
+  print('Authentication successful.')
 
   return credential

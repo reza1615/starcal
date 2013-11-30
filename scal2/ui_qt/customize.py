@@ -130,7 +130,7 @@ class CustomizeDialog(qt.QWidget):## QDialog
             try:
                 self.widget.addWidget(item.widget)
             except TypeError:
-                print '\nERROR: the widget for item %s has wrong type %s'%(item._name, type(item.widget))
+                print('\nERROR: the widget for item %s has wrong type %s'%(item._name, type(item.widget)))
         self.widget.setVisible(True)
         for item in items:
             if item.enable:

@@ -102,13 +102,13 @@ class ExportDialog(qt.QFileDialog):
     def done(self, i):
         self.hide()
     def save(self, path):
-        print 'save', path
+        print('save', path)
         self.setCursor(qc.Qt.WaitCursor)
         #while gtk.events_pending():## FIXME
         #    gtk.main_iteration_do(False)
         if path in (None, ''):
             return
-        print 'Exporting to html file "%s"'%path
+        print('Exporting to html file "%s"'%path)
         i = self.combo.currentIndex()
         months = []
         module = core.modules[core.primaryMode]

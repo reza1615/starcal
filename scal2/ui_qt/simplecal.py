@@ -396,7 +396,7 @@ class SimpleCal(qt.QWidget):
     self.setDate(*core.getSysDate())
 
 def dayChanged(*args):
-  print 'dayChanged', args
+  print('dayChanged', args)
 
 
 if __name__=='__main__':

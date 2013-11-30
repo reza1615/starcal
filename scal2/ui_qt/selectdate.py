@@ -171,9 +171,9 @@ class SelectDateDialog(qt.QWidget):
             return
         date = ui.parseDroppedDate(text)
         if date==None:
-            print 'selectDateDialog: dropped text "%s"'%text
+            print('selectDateDialog: dropped text "%s"'%text)
             return
-        print 'selectDateDialog: dropped date: %d/%d/%d'%date
+        print('selectDateDialog: dropped date: %d/%d/%d'%date)
         mode = self.comboMode.currentIndex()
         if mode!=ui.dragGetMode:
             date = convert(date[0], date[1], date[2], ui.dragGetMode, mode)
@@ -260,7 +260,7 @@ class SelectDateDialog(qt.QWidget):
         else:
             y, m, d = convert(y0, m0, d0, mode, core.primaryMode)
         if not core.validDate(mode, y, m, d):
-            print 'bad date: %s'%dateStr(mode, y, m, d)
+            print('bad date: %s'%dateStr(mode, y, m, d))
             return
         self.emit(qc.SIGNAL('response-date'), y, m, d)
         self.hide()

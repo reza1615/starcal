@@ -333,7 +333,7 @@ class MonthCal(qt.QWidget, MainWinItem):
         self.onDateChange()
     def keyPressEvent(self, event):
         k = event.key()
-        print now(), 'MonthCal.keyPressEvent', k, hex(k)
+        print(now(), 'MonthCal.keyPressEvent', k, hex(k))
         if k==qc.Qt.Key_Up:
             self.jdPlus(-7)
         elif k==qc.Qt.Key_Down:
@@ -364,10 +364,10 @@ class MonthCal(qt.QWidget, MainWinItem):
             #print 'keyPressEvent: menu', event.modifiers()
             if event.modifiers() & qc.Qt.ShiftModifier:
                 ## Simulate right click (key beside Right-Ctrl)
-                print 'popup-menu-cell'
+                print('popup-menu-cell')
                 self.emit(qc.SIGNAL('popup-menu-cell'), *self.getCellPos())
             else:
-                print 'popup-menu-main'
+                print('popup-menu-main')
                 self.emit(qc.SIGNAL('popup-menu-main'), *self.getMainMenuPos())
         else:
             event.ignore() ## I dont want the event. Propagate to the parent widget.

@@ -127,13 +127,13 @@ def run(flow, storage):
     oauth_callback = 'oob'
   authorize_url = flow.step1_get_authorize_url(oauth_callback)
 
-  print 'Go to the following link in your browser:'
-  print authorize_url
-  print
+  print('Go to the following link in your browser:')
+  print(authorize_url)
+  print()
   if FLAGS.auth_local_webserver:
-    print 'If your browser is on a different machine then exit and re-run this'
-    print 'application with the command-line parameter --noauth_local_webserver.'
-    print
+    print('If your browser is on a different machine then exit and re-run this')
+    print('application with the command-line parameter --noauth_local_webserver.')
+    print()
 
   if FLAGS.auth_local_webserver:
     httpd.handle_request()
@@ -154,6 +154,6 @@ def run(flow, storage):
 
   storage.put(credentials)
   credentials.set_store(storage.put)
-  print "You have successfully authenticated."
+  print("You have successfully authenticated.")
 
   return credentials

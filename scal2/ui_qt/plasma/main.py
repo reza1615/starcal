@@ -124,7 +124,7 @@ class StarCalApplet(MainWin):
         ######
         self.trayUpdate() ## ??????? Needed?
     def closeEvent(self, event):
-        print '--------------- StarCalApplet.closeEvent'
+        print('--------------- StarCalApplet.closeEvent')
         self.tbutton.setChecked(False)
         MainWin.closeEvent(self, event)
     def trayInit(self):
@@ -151,7 +151,7 @@ class StarCalApplet(MainWin):
         #hbox.setItemSpacing(0, 0)
         #hbox.setAlignment(self.icon, qc.Qt.Alignment(qc.Qt.AlignHCenter))
         self.tbutton.setLayout(hbox)
-        print 'name=%s'%self.name
+        print('name=%s'%self.name)
         #self.connect(self, qc.SIGNAL('hoverMoveEvent'), self.hoverMoveEvent)
         self.tooltipMgr = PyKDE4.plasma.Plasma.ToolTipManager.self()
         self.tooltipMgr.registerWidget(self.papplet.applet)
@@ -181,7 +181,7 @@ class StarCalApplet(MainWin):
             ui.winY = p.y()
             self.hide()
     def appletButtonPress(self, *args):
-        print 'appletButtonPress', args
+        print('appletButtonPress', args)
         ## ????? Check if button==3 open the menu
     def updateTrayClock(self):
         clockTr0 = ui.showDigClockTr

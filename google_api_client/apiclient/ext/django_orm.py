@@ -45,7 +45,7 @@ class FlowThreeLeggedField(models.Field):
     return 'VARCHAR'
 
   def to_python(self, value):
-    print "In to_python", value
+    print("In to_python", value)
     if value is None:
       return None
     if isinstance(value, apiclient.oauth.FlowThreeLegged):
