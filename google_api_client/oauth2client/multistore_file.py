@@ -47,8 +47,8 @@ except ImportError:  # pragma: no cover
     # Should work for Python2.6 and higher.
     import json as simplejson
 
-from client import Storage as BaseStorage
-from client import Credentials
+from .client import Storage as BaseStorage
+from .client import Credentials
 
 logger = logging.getLogger(__name__)
 

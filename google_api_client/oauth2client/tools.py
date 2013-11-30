@@ -28,7 +28,7 @@ import gflags
 import socket
 import sys
 
-from client import FlowExchangeError
+from .client import FlowExchangeError
 
 try:
   from urlparse import parse_qsl

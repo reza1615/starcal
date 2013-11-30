@@ -31,7 +31,7 @@ import re
 import uritemplate
 import urllib
 import urlparse
-import mimeparse
+from . import mimeparse
 import mimetypes
 
 try:

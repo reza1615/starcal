@@ -34,8 +34,8 @@ except ImportError:  # pragma: no cover
     import json as simplejson
 
 
-from client import Storage as BaseStorage
-from client import Credentials
+from .client import Storage as BaseStorage
+from .client import Credentials
 
 
 class Storage(BaseStorage):

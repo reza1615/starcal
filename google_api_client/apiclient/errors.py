@@ -22,7 +22,7 @@ should be defined in this file.
 __author__ = 'jcgregorio@google.com (Joe Gregorio)'
 
 
-from anyjson import simplejson
+from .anyjson import simplejson
 
 
 class Error(Exception):

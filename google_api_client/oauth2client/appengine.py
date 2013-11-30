@@ -35,14 +35,14 @@ except ImportError: # pragma: no cover
     # Should work for Python2.6 and higher.
     import json as simplejson
 
-import clientsecrets
+from . import clientsecrets
 
-from client import AccessTokenRefreshError
-from client import AssertionCredentials
-from client import Credentials
-from client import Flow
-from client import OAuth2WebServerFlow
-from client import Storage
+from .client import AccessTokenRefreshError
+from .client import AssertionCredentials
+from .client import Credentials
+from .client import Flow
+from .client import OAuth2WebServerFlow
+from .client import Storage
 from google.appengine.api import memcache
 from google.appengine.api import users
 from google.appengine.api.app_identity import app_identity

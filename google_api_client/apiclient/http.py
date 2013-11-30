@@ -29,23 +29,23 @@ import StringIO
 import copy
 import gzip
 import httplib2
-import mimeparse
+from . import mimeparse
 import mimetypes
 import os
 import urllib
 import urlparse
 import uuid
 
-from anyjson import simplejson
+from .anyjson import simplejson
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
 from email.parser import FeedParser
-from errors import BatchError
-from errors import HttpError
-from errors import ResumableUploadError
-from errors import UnexpectedBodyError
-from errors import UnexpectedMethodError
-from model import JsonModel
+from .errors import BatchError
+from .errors import HttpError
+from .errors import ResumableUploadError
+from .errors import UnexpectedBodyError
+from .errors import UnexpectedMethodError
+from .model import JsonModel
 
 
 class MediaUploadProgress(object):

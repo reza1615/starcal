@@ -26,7 +26,7 @@ import logging
 import oauth2 as oauth
 import urllib
 import urlparse
-from anyjson import simplejson
+from .anyjson import simplejson
 
 try:
   from urlparse import parse_qsl

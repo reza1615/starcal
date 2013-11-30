@@ -27,8 +27,8 @@ import gflags
 import logging
 import urllib
 
-from anyjson import simplejson
-from errors import HttpError
+from .anyjson import simplejson
+from .errors import HttpError
 
 FLAGS = gflags.FLAGS
 
