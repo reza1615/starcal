@@ -182,7 +182,7 @@ def build(serviceName, version,
 
   try:
     service = simplejson.loads(content)
-  except ValueError, e:
+  except ValueError as e:
     logging.error('Failed to parse as JSON: ' + content)
     raise InvalidJsonError()
 

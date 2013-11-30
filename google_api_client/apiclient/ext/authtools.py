@@ -114,7 +114,7 @@ def run(flow, storage):
       try:
         httpd = BaseHTTPServer.HTTPServer((FLAGS.auth_host_name, port),
             ClientRedirectHandler)
-      except socket.error, e:
+      except socket.error as e:
         pass
       else:
         success = True
