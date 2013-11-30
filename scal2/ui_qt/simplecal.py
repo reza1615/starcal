@@ -99,7 +99,7 @@ class SimpleCal(qt.QWidget):
     currentMonthLen = core.getMonthLen(year, month, self.mode)
     s.monthLen = currentMonthLen
     #####################
-    s.weekNum = [self.weekNumber(year, month, 1+7*i) for i in xrange(6)]
+    s.weekNum = [self.weekNumber(year, month, 1+7*i) for i in range(6)]
     offset = core.getWeekDay(year, month, 1)
     if offset==0:
       ###### Which Method ????????????????????
@@ -109,9 +109,9 @@ class SimpleCal(qt.QWidget):
       day = prevMonthLen - offset + 1
     s.monthStartOffset = offset
     ######################
-    for i in xrange(6):
+    for i in range(6):
       s.append([])
-      for j in xrange(7):
+      for j in range(7):
         c = Cell()
         c.pos = (j, i)
         s[i].append(c)
@@ -270,12 +270,12 @@ class SimpleCal(qt.QWidget):
     rtl = self._rtl()
     if rtl:
       self.cx = [ (w-self.leftMargin)*(13.0-2*i)/14.0\
-                  for i in xrange(7) ] ## centers x
+                  for i in range(7) ] ## centers x
     else:
       self.cx = [self.leftMargin + (w-self.leftMargin)*(1.0+2*i)/14.0\
-                 for i in xrange(7) ] ## centers x
+                 for i in range(7) ] ## centers x
     self.cy = [self.topMargin + (h-self.topMargin)*(1.0+2*i)/12.0\
-               for i in xrange(6) ] ## centers y
+               for i in range(6) ] ## centers y
     self.dx = (w-self.leftMargin)/7.0 ## delta x
     self.dy = (h-self.topMargin)/6.0 ## delta y
     self.gx = [x + self._rtlSgn()*self.dx/2.0 for x in self.cx] ## grid x
@@ -329,12 +329,12 @@ class SimpleCal(qt.QWidget):
     #######
     painter.end()
   def _findCol(self, x):
-    for i in xrange(7):
+    for i in range(7):
       if abs(x-self.cx[i]) <= self.dx/2.0:
         return i
     return -1
   def _findRow(self, y):
-    for i in xrange(6):
+    for i in range(6):
       if abs(y-self.cy[i]) <= self.dy/2.0:
         return i
     return -1

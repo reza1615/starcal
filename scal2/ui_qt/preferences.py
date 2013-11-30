@@ -693,7 +693,7 @@ class CalPropPrefItem(PrefItem):
         ######
         n = len(getattr(self.module, self.varName))
         self.num = n
-        for i in xrange(n):
+        for i in range(n):
             checkb = qt.QCheckBox('', self.widget)
             checkb.setSizePolicy(qt.QSizePolicy.Fixed, qt.QSizePolicy.Fixed)
             checkb.setToolTip(_('Enable/Disable'))
@@ -741,7 +741,7 @@ class CalPropPrefItem(PrefItem):
         self.widget.setLayout(lay)
     def get(self):
         result = []
-        for i in xrange(self.num):
+        for i in range(self.num):
             result.append({
                 'enable':self.checkb[i].checkState()==qc.Qt.Checked,
                 'mode'  :self.combo[i].currentIndex(),
@@ -1095,7 +1095,7 @@ class PluginTreeview(qt.QTreeWidget):
         treev = self.plugAddTreev
         treev.clear()
         if n1 < n2:
-            for i in xrange(n2):
+            for i in range(n2):
                 """
                 if i not in core.plugIndex:
                 """

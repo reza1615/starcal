@@ -101,7 +101,7 @@ class SelectDateDialog(qt.QWidget):
         wlist.append(label)
         combo = qt.QComboBox()
         module = core.modules[core.primaryMode]
-        for i in xrange(12):
+        for i in range(12):
             combo.addItem(_(module.getMonthName(i+1, None)))## year=None means all months
         combo.setCurrentIndex(0)
         self.connect(combo, qc.SIGNAL('currentIndexChanged(int)'), self.comboMonthChanged)
@@ -205,7 +205,7 @@ class SelectDateDialog(qt.QWidget):
         module = core.modules[mode]
         combo = self.comboMonth
         combo.clear()
-        for i in xrange(12):
+        for i in range(12):
             combo.addItem(_(module.getMonthName(i+1)))
         self.comboMode.setCurrentIndex(mode)
         self.spinD.setRange(1, core.modules[mode].maxMonthLen)
@@ -223,7 +223,7 @@ class SelectDateDialog(qt.QWidget):
         combo = self.comboMonth
         self.disconnect(combo, qc.SIGNAL('currentIndexChanged(int)'), self.comboMonthChanged)
         combo.clear()
-        for i in xrange(12):
+        for i in range(12):
             combo.addItem(_(module.getMonthName(i+1, y)))
         self.connect(combo, qc.SIGNAL('currentIndexChanged(int)'), self.comboMonthChanged)
         self.spinD.setRange(1, module.maxMonthLen)

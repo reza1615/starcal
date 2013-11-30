@@ -758,7 +758,7 @@ class YearMonthLabelBox(HBox, MainWinItem): ## FIXME
                 if w > wm:
                     wm = w
             monthWidth.append(wm)
-        for i in xrange(len(ui.shownCals)):
+        for i in range(len(ui.shownCals)):
             mode = ui.shownCals[i]['mode']
             self.monthLabel[i].setFixedWidth(monthWidth[mode])
         ###

@@ -101,7 +101,7 @@ class MonthCal(qt.QWidget, MainWinItem):
             painter.setPen(qt.QColor(*ui.borderTextColor))
             dx = 0
             wdayAb = (self.wdaysWidth > w)
-            for i in xrange(7):
+            for i in range(7):
                 painter.drawText(self.cx[i]-self.dx/2.0, 0, self.dx, ui.mcalTopMargin,
                                  qc.Qt.AlignCenter, core.getWeekDayAuto(i, wdayAb))
             ######## Drawing "Menu" label
@@ -123,7 +123,7 @@ class MonthCal(qt.QWidget, MainWinItem):
                 painter.drawRect(0, ui.mcalTopMargin, ui.mcalLeftMargin, h-ui.mcalTopMargin)
             ##### Drawing week numbers
             painter.setPen(qt.QColor(*ui.borderTextColor))
-            for i in xrange(6):
+            for i in range(6):
                 painter.drawText(
                     w - ui.mcalLeftMargin if rtl else 0,
                     self.cy[i]-self.dy/2.0,
@@ -135,8 +135,8 @@ class MonthCal(qt.QWidget, MainWinItem):
         cursor = True ## FIXME
         quad = 90 ## 90*16
         selectedCellPos = ui.cell.monthPos
-        for yPos in xrange(6):
-            for xPos in xrange(7):
+        for yPos in range(6):
+            for xPos in range(7):
                 c = status[yPos][xPos]
                 x0 = self.cx[xPos]
                 y0 = self.cy[yPos]
@@ -294,9 +294,9 @@ class MonthCal(qt.QWidget, MainWinItem):
         ##### drawGrid
         if ui.mcalGrid:
             painter.setBrush(qt.QColor(*ui.mcalGridColor))
-            for i in xrange(7):
+            for i in range(7):
                 painter.drawRect(self.cx[i]+rtlSgn()*self.dx/2.0, 0, 1, h)
-            for i in xrange(6):
+            for i in range(6):
                 painter.drawRect(0, self.cy[i]-self.dy/2.0, w, 1)
     ## def dragDataGet
     ## def dragLeave
@@ -307,7 +307,7 @@ class MonthCal(qt.QWidget, MainWinItem):
         ### synopsis or no
         qfont = qfontEncode(ui.getFont())
         wm = 0 ## max width
-        for i in xrange(7):
+        for i in range(7):
             w = calcTextWidth(core.weekDayName[i], qfont)
             #print w,
             if w > wm:
@@ -319,13 +319,13 @@ class MonthCal(qt.QWidget, MainWinItem):
         h = self.height()
         if rtl:
             self.cx = [ (w-ui.mcalLeftMargin)*(13.0-2*i)/14.0 \
-                                 for i in xrange(7) ] ## centers x
+                                 for i in range(7) ] ## centers x
         else:
             self.cx = [ui.mcalLeftMargin \
                                  + (w-ui.mcalLeftMargin)*(1.0+2*i)/14.0 \
-                                 for i in xrange(7) ] ## centers x
+                                 for i in range(7) ] ## centers x
         self.cy = [ui.mcalTopMargin + (h-ui.mcalTopMargin)*(1.0+2*i)/12.0 \
-                             for i in xrange(6) ] ## centers y
+                             for i in range(6) ] ## centers y
         self.dx = (w-ui.mcalLeftMargin)/7.0 ## delta x
         self.dy = (h-ui.mcalTopMargin)/6.0 ## delta y
     def monthPlus(self, p):
@@ -383,11 +383,11 @@ class MonthCal(qt.QWidget, MainWinItem):
         if b!=qc.Qt.MidButton:
             sx = -1
             sy = -1
-            for i in xrange(7):
+            for i in range(7):
                 if abs(x-self.cx[i]) <= self.dx/2.0:
                     sx = i
                     break
-            for i in xrange(6):
+            for i in range(6):
                 if abs(y-self.cy[i]) <= self.dy/2.0:
                     sy = i
                     break
