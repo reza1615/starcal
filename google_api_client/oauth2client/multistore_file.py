@@ -89,7 +89,7 @@ def get_credential_storage(filename, client_id, user_agent, scope,
         filename, _MultiStore(filename, warn_on_readonly))
   finally:
     _multistores_lock.release()
-  if type(scope) is list:
+  if isinstance(scope, list):
     scope = ' '.join(scope)
   return multistore._get_storage(client_id, user_agent, scope)
 

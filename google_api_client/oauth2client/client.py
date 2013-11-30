@@ -688,7 +688,7 @@ if HAS_OPENSSL:
           token_uri=token_uri,
           )
 
-      if type(scope) is list:
+      if isinstance(scope, list):
         scope = ' '.join(scope)
       self.scope = scope
 
@@ -814,7 +814,7 @@ class OAuth2WebServerFlow(Flow):
     """
     self.client_id = client_id
     self.client_secret = client_secret
-    if type(scope) is list:
+    if isinstance(scope, list):
       scope = ' '.join(scope)
     self.scope = scope
     self.user_agent = user_agent

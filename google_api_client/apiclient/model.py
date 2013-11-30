@@ -164,7 +164,7 @@ class BaseModel(Model):
       params.update({'alt': self.alt_param})
     astuples = []
     for key, value in params.iteritems():
-      if type(value) == type([]):
+      if isinstance(value, type([])):
         for x in value:
           x = x.encode('utf-8')
           astuples.append((key, x))
@@ -349,7 +349,7 @@ def makepatch(original, modified):
       # Use None to signal that the element is deleted
       patch[key] = None
     elif original_value != modified_value:
-      if type(original_value) == type({}):
+      if isinstance(original_value, type({})):
         # Recursively descend objects
         patch[key] = makepatch(original_value, modified_value)
       else:

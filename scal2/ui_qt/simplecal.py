@@ -147,8 +147,7 @@ class SimpleCal(qt.QWidget):
       n = len(self.months)
       #print 'Cache size: %s'%n
       if n >= self.maxCache:
-        keys = self.months.keys()
-        keys.sort()
+        keys = sorted(self.months.keys())
         if keys[n/2] < (year, month):
           rm = keys[0]
           if rm==self.today[:2]:

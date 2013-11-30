@@ -270,7 +270,7 @@ def _cast(value, schema_type):
     A string representation of 'value' based on the schema_type.
   """
   if schema_type == 'string':
-    if type(value) == type('') or type(value) == type(u''):
+    if isinstance(value, type('')) or isinstance(value, type(u'')):
       return value
     else:
       return str(value)
@@ -281,7 +281,7 @@ def _cast(value, schema_type):
   elif schema_type == 'boolean':
     return str(bool(value)).lower()
   else:
-    if type(value) == type('') or type(value) == type(u''):
+    if isinstance(value, type('')) or isinstance(value, type(u'')):
       return value
     else:
       return str(value)
@@ -430,7 +430,7 @@ def createResource(http, baseUrl, model, requestBuilder,
       for key, value in kwargs.iteritems():
         to_type = param_type.get(key, 'string')
         # For repeated parameters we cast each member of the list.
-        if key in repeated_params and type(value) == type([]):
+        if key in repeated_params and isinstance(value, type([])):
           cast_value = [_cast(x, to_type) for x in value]
         else:
           cast_value = _cast(value, to_type)

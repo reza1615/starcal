@@ -11,14 +11,13 @@ TEMPLATE = re.compile(r"{(?P<operator>[\+\./;\?|!@])?(?P<varlist>[^}]+)}", re.UN
 VAR = re.compile(r"^(?P<varname>[^=\+\*:\^]+)((?P<explode>[\+\*])|(?P<partial>[:\^]-?[0-9]+))?(=(?P<default>.*))?$", re.UNICODE)
 
 def _tostring(varname, value, explode, operator, safe=""):
-  if type(value) == type([]):
+  if isinstance(value, type([])):
     if explode == "+":
       return ",".join([varname + "." + urllib.quote(x, safe) for x in value])
     else:
       return ",".join([urllib.quote(x, safe) for x in value])
-  if type(value) == type({}):
-    keys = value.keys()
-    keys.sort()
+  if isinstance(value, type({})):
+    keys = sorted(value.keys())
     if explode == "+":
       return ",".join([varname + "." + urllib.quote(key, safe) + "," + urllib.quote(value[key], safe) for key in keys])
     else:
@@ -29,16 +28,15 @@ def _tostring(varname, value, explode, operator, safe=""):
 
 def _tostring_path(varname, value, explode, operator, safe=""):
   joiner = operator
-  if type(value) == type([]):
+  if isinstance(value, type([])):
     if explode == "+":
       return joiner.join([varname + "." + urllib.quote(x, safe) for x in value])
     elif explode == "*":
       return joiner.join([urllib.quote(x, safe) for x in value])
     else:
       return ",".join([urllib.quote(x, safe) for x in value])
-  elif type(value) == type({}):
-    keys = value.keys()
-    keys.sort()
+  elif isinstance(value, type({})):
+    keys = sorted(value.keys())
     if explode == "+":
       return joiner.join([varname + "." + urllib.quote(key, safe) + joiner + urllib.quote(value[key], safe) for key in keys])
     elif explode == "*":
@@ -57,7 +55,7 @@ def _tostring_query(varname, value, explode, operator, safe=""):
   if operator == "?":
     joiner = "&"
     varprefix = varname + "="
-  if type(value) == type([]):
+  if isinstance(value, type([])):
     if 0 == len(value):
       return ""
     if explode == "+":
@@ -66,11 +64,10 @@ def _tostring_query(varname, value, explode, operator, safe=""):
       return joiner.join([urllib.quote(x, safe) for x in value])
     else:
       return varprefix + ",".join([urllib.quote(x, safe) for x in value])
-  elif type(value) == type({}):
+  elif isinstance(value, type({})):
     if 0 == len(value):
       return ""
-    keys = value.keys()
-    keys.sort()
+    keys = sorted(value.keys())
     if explode == "+":
       return joiner.join([varname + "." + urllib.quote(key, safe) + "=" + urllib.quote(value[key], safe) for key in keys])
     elif explode == "*":
