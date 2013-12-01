@@ -326,7 +326,7 @@ class HttpRequest(object):
       while response is None:
         status, response = request.next_chunk()
         if status:
-          print "Upload %d%% complete." % int(status.progress() * 100)
+          print("Upload %d%% complete." % int(status.progress() * 100))
 
 
     Returns:

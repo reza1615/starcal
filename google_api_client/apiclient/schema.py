@@ -15,7 +15,7 @@
 """Schema processing for discovery based APIs
 
 Schemas holds an APIs discovery schemas. It can return those schema as
-deserialized JSON objects, or pretty print them as prototype objects that
+deserialized JSON objects, or pretty_print them as prototype objects that
 conform to the schema.
 
 For example, given the schema:
@@ -43,7 +43,7 @@ For example, given the schema:
  }\"\"\"
 
  s = Schemas(schema)
- print s.prettyPrintByName('Foo')
+ print(s.prettyPrintByName('Foo'))
 
  Produces the following output:
 

@@ -398,8 +398,8 @@ class StarCalendarScreenlet(screenlets.Screenlet):
                 if row == 6:
                     row = 1
                 ctx.translate(6 + (day - 1)*13, 25 + 12*(row - 1))
-                #print str(6 + (day - 1)*13)
-                #print str( 25 + 12*(row - 1))
+                #print(str(6 + (day - 1)*13))
+                #print(str( 25 + 12*(row - 1)))
                 if self.__month_shift == 0 and int(x)+1 == int(date[0]):
                     ctx.set_source_rgba(*self.today_color)
                     self.draw_rounded_rectangle(ctx,0,0,2,10,9)

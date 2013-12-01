@@ -92,7 +92,7 @@ def accepted():
         i = langCombo.currentIndex()
         langCode = langCodeList[i]
         thisLangConfDir = join(langConfDir, langCode)
-        #print 'Setting language', langCode
+        #print('Setting language', langCode)
         if not os.path.isdir(confDir):
             os.mkdir(confDir, 0755)
         if os.path.isdir(thisLangConfDir):

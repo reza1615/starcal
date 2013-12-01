@@ -69,13 +69,13 @@ class LocationDialog(qt.QDialog):
         for l in lines:
             p = l.split('\t')
             if len(p)<2:
-                #print p
+                #print(p)
                 continue
             if p[0]=='':
                 if p[1]=='':
                     city, lat, lng = p[2:5]
                     #if country=='Iran':
-                    #    print city
+                    #    print(city)
                     if len(p)>4:
                         cityData.append((
                             country + '/' + city,
@@ -380,7 +380,7 @@ class TextPlugUI:
         self.confDialog.hide()
         self.updateConfWidget()
     def confDialogOk(self):
-        #print 'confDialogOk'
+        #print('confDialogOk')
         self.confDialog.hide()
         #self.confDialog.accept()
         self.updateConfVars()

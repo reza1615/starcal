@@ -179,7 +179,7 @@ class CustomizeDialog(qt.QWidget):## QDialog
         index, parentIndex = self.getSelectedIndex()
         if index==-1:
             return
-        #print 'treevCursorChanged', index, parentIndex
+        #print('treevCursorChanged', index, parentIndex)
         item = self.getItemByIndex(index, parentIndex)
         if item.optionsWidget:
             self.optionBox.setCurrentWidget(item.optionsWidget)
@@ -190,7 +190,7 @@ class CustomizeDialog(qt.QWidget):## QDialog
         index, parentIndex = self.getSelectedIndex()
         if index==-1:
             return
-        #print 'upClicked', index, parentIndex
+        #print('upClicked', index, parentIndex)
         #item = self.getItemByIndex(index, parentIndex)
         if index<=0:
             qt.QApplication.beep()
@@ -211,7 +211,7 @@ class CustomizeDialog(qt.QWidget):## QDialog
         index, parentIndex = self.getSelectedIndex()
         if index==-1:
             return
-        #print 'upClicked', index, parentIndex
+        #print('upClicked', index, parentIndex)
         #item = self.getItemByIndex(index, parentIndex)
         if parentIndex==-1:
             if index>=len(self.items)-1:

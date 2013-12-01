@@ -211,7 +211,7 @@ class SelectDateDialog(qt.QWidget):
         self.spinD.setRange(1, core.modules[mode].maxMonthLen)
         self.dateInput.maxs = (9999, 12, module.maxMonthLen)
     def comboModeChanged(self, mode):
-        #print 'comboModeChanged, index="%s"'%index
+        #print('comboModeChanged, index="%s"'%index)
         pMode = self.mode
         pDate = self.get()
         module = core.modules[mode]
@@ -287,7 +287,7 @@ if __name__=='__main__':
         app.setLayoutDirection(qc.Qt.RightToLeft)
     dialog = SelectDateDialog()
     def response(year, month, day):
-        print '%d/%d/%d\n'%(year, month, day)
+        print('%d/%d/%d\n'%(year, month, day))
         dialog.destroy()
         sys.exit(0)
     dialog.connect(dialog, qc.SIGNAL('response-date'), response)

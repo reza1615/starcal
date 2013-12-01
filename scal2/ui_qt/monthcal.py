@@ -309,11 +309,11 @@ class MonthCal(qt.QWidget, MainWinItem):
         wm = 0 ## max width
         for i in range(7):
             w = calcTextWidth(core.weekDayName[i], qfont)
-            #print w,
+            #print(w,)
             if w > wm:
                 wm = w
         self.wdaysWidth = wm*7 + ui.mcalLeftMargin
-        #print 'max =', wm, '     wdaysWidth =', self.wdaysWidth
+        #print('max =', wm, '     wdaysWidth =', self.wdaysWidth)
     def calcCoord(self):## calculates coordidates (x and y of cells centers)
         w = self.width()
         h = self.height()
@@ -361,7 +361,7 @@ class MonthCal(qt.QWidget, MainWinItem):
         elif k==qc.Qt.Key_Menu:# Simulate right click (key beside Right-Ctrl)
             self.emit(qc.SIGNAL('popup-menu-cell'), *self.getCellPos())
         elif k in (qc.Qt.Key_F10, qc.Qt.Key_M):
-            #print 'keyPressEvent: menu', event.modifiers()
+            #print('keyPressEvent: menu', event.modifiers())
             if event.modifiers() & qc.Qt.ShiftModifier:
                 ## Simulate right click (key beside Right-Ctrl)
                 print('popup-menu-cell')
@@ -371,11 +371,11 @@ class MonthCal(qt.QWidget, MainWinItem):
                 self.emit(qc.SIGNAL('popup-menu-main'), *self.getMainMenuPos())
         else:
             event.ignore() ## I dont want the event. Propagate to the parent widget.
-            #print now(), 'MonthCal.keyPressEvent', hex(k)
+            #print(now(), 'MonthCal.keyPressEvent', hex(k))
             return
         event.accept() ## I want the event. Do not propagate to the parent widget.
     def mousePressEvent(self, event):
-        #print 'monthcal: mousePressEvent'
+        #print('monthcal: mousePressEvent')
         x= event.x()
         y = event.y()
         b = event.button()

@@ -160,7 +160,7 @@ class MonthLabel(qt.QLabel):
         self.setActive(item)
         self.emit(qc.SIGNAL('changed'), self, item)
     def mousePressEvent(self, event):
-        #print 'starcal_qt: mousePressEvent'
+        #print('starcal_qt: mousePressEvent')
         button = event.button()
         #if button!=qc.Qt.RightButton:
         #    event.ignore()
@@ -701,7 +701,7 @@ class YearMonthLabelBox(HBox, MainWinItem): ## FIXME
         self.onDateChange()
         self.emit(qc.SIGNAL('date-change'), self)
     def monthLabelChange(self, mlabel, item):
-        #print 'monthLabelChange', item, mlabel.mode
+        #print('monthLabelChange', item, mlabel.mode)
         p_year, p_month, p_day = ui.cell.dates[mlabel.mode]
         ui.changeDate(*convert(p_year, item+1, p_day, mlabel.mode, core.primaryMode))
         self.onDateChange()
@@ -813,7 +813,7 @@ class StatusBox(qt.QStatusBar, MainWinItem): ## FIXME
         count = (self.width() - met.width(text))//(met.width(' ')*(n+1))
         text = text.replace(' ', ' '*count)
         self.showMessage(text)
-        #print self.width(), met.width(text)
+        #print(self.width(), met.width(text))
 
 """
 class PluginsTextBox(VBox, MainWinItem):
@@ -863,7 +863,7 @@ class PluginsTextBox(VBox, MainWinItem):
         ####
         MainWinItem.__init__(self, 'pluginsText', _('Plugins Text'), optionsWidget=optionsWidget)
     def enableExpanderCheckbStateChanged(self, state):
-        print 'enableExpanderCheckbStateChanged'
+        print('enableExpanderCheckbStateChanged')
         self.setEnableExpander(state == qc.Qt.Checked)
         #qt.QCheckBox.stateChanged(self.enableExpanderCheckb, state)
     getWidget = lambda self: self.expander if self.enableExpander else self.textview
@@ -887,7 +887,7 @@ class PluginsTextBox(VBox, MainWinItem):
         if self.window:
             self.window.setMinHeightLater()
     def setEnableExpander(self, enable):
-        #print 'setEnableExpander', enable
+        #print('setEnableExpander', enable)
         if enable:
             if not self.enableExpander:
                 self.removeWidget(self.textview)
@@ -1052,8 +1052,8 @@ class MainWin(qt.QMainWindow):
 
         """
         hbox = qt.QHBoxLayout()
-        #print 'spacing', hbox.spacing()
-        #print 'margin', hbox.margin()
+        #print('spacing', hbox.spacing())
+        #print('margin', hbox.margin())
         hbox.addWidget(toolbar)
         hbox.addStretch()
         if ui.showDigClockTb:
@@ -1219,8 +1219,8 @@ class MainWin(qt.QMainWindow):
                 plug.set_dialog(self)
         ########################### END OF MainWin.__init__
     #def mainWinStateEvent(self, obj, event):
-        #print dir(event)
-        #print event.new_window_state
+        #print(dir(event))
+        #print(event.new_window_state)
         #self.event = event
     selectDateShow = lambda self: self.selectDateDialog.show()
     def selectDateResponse(self, y, m, d):
@@ -1228,7 +1228,7 @@ class MainWin(qt.QMainWindow):
         self.onDateChange()
     def keyPressEvent(self, event):
         k = event.key()
-        #print now(), 'MainWin.keyPressEvent', k, hex(k)
+        #print(now(), 'MainWin.keyPressEvent', k, hex(k))
         ## file:///usr/share/doc/python-qt4-doc/html/qt.html#Key-enum
         ## file:///usr/share/doc/python-qt4-doc/html/qkeyevent.html
         if k==qc.Qt.Key_Escape:
@@ -1319,13 +1319,13 @@ class MainWin(qt.QMainWindow):
         self.onDateChange()
     goToday = lambda self, widget=None: self.changeDate(*core.getSysDate())
     def onDateChange(self, sender=None):
-        #print 'MainWin.onDateChange, sender is %s instance'%sender.__class__.__name__
+        #print('MainWin.onDateChange, sender is %s instance'%sender.__class__.__name__)
         for item in self.items:
             if item.enable and item is not sender:
                 #try:
                     item.onDateChange()
                 #except AttributeError:
-                #    print 'item %s does not have onDateChange'%item._name
+                #    print('item %s does not have onDateChange'%item._name)
         #for j in range(len(core.plugIndex)):##????????????????????
         #    try:
         #        core.allPlugList[core.plugIndex[j]].date_change(*date)
@@ -1477,7 +1477,7 @@ class MainWin(qt.QMainWindow):
             mx = x-menuW
             my = y
         else:
-            #print 'trayPopup: x=%s, x+w=%s, screenW=%s    y=%s, y+h=%s, screenH=%s'%(x, x+w, screenW, y, y+h, screenH)
+            #print('trayPopup: x=%s, x+w=%s, screenW=%s    y=%s, y+h=%s, screenH=%s'%(x, x+w, screenW, y, y+h, screenH))
             mx = x
             my = y
         menu.popup(qc.QPoint(mx, my))
@@ -1539,7 +1539,7 @@ class MainWin(qt.QMainWindow):
         elif reason==qt.QSystemTrayIcon.MiddleClick:##???????????
             self.copyTime()
             return
-        #print 'trayClicked'
+        #print('trayClicked')
         if self.isVisible():
             p = self.pos()
             ui.winX = p.x()
@@ -1553,7 +1553,7 @@ class MainWin(qt.QMainWindow):
             #self.raise_()
             self.show()## does not work!
     def closeEvent(self, event):
-        #print '--------------- MainWin.closeEvent'
+        #print('--------------- MainWin.closeEvent')
         p = self.pos()
         ui.winX = p.x()
         ui.winY = p.y()

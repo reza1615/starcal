@@ -31,7 +31,7 @@ from PyQt4 import QtCore as qc
 qc.QLocale.setDefault(qc.QLocale(qc.QLocale.Persian, qc.QLocale.Iran))
 qloc = qc.QLocale()
 qloc.setNumberOptions(qc.QLocale.OmitGroupSeparator)
-##print 'language', qloc.language() ## QLocale.Persian==89
+##print('language', qloc.language() ## QLocale.Persian==89)
 
 def myRaise():
     i = sys.exc_info()
@@ -82,7 +82,7 @@ class MultiSpinBox(qt.QAbstractSpinBox):
         self.widthChars = pos ## width of entry(lineedit) in chars
         ## self.set_width_chars(pos) #???????## GTK
         metrics=self.entry.fontMetrics() ## like metrics=qt.QFontMetrics(self.entry.font())
-        #print 'metrics', metrics.maxWidth(), metrics.charWidth(self.zero, 0)
+        #print('metrics', metrics.maxWidth(), metrics.charWidth(self.zero, 0))
         self.widthPix = metrics.charWidth(self.zero, 0) * pos + 25 ## ???????????
         ## self.widthPix = metrics.maxWidth()*pos
         self.setMinimumWidth(self.widthPix)
@@ -158,7 +158,7 @@ class MultiSpinBox(qt.QAbstractSpinBox):
                 if pos <= self.sepIndex[i]:
                     part = i
                     break
-        #print part, self.nums
+        #print(part, self.nums)
         new = self.nums[part] + plus
         if new > self.maxs[part]:#or self.maxs[part]==None:
             new = self.mins[part]

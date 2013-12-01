@@ -68,7 +68,7 @@ class Expander(qt.QTreeWidget):
             self.label = None
     def mousePressEvent(self, ev):
         ## expand when click on root item (like GtkExpander)
-        #print 'press', ev.y()
+        #print('press', ev.y())
         if ev.y() < self.rootH:
             self.pressY = ev.y()
         else:

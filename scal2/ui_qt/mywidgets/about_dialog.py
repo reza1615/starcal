@@ -152,7 +152,7 @@ class AboutDialog(qt.QWidget):
     def close(self):##????????????
         self.hide()
     #def exec_(self):
-    #    print 'exec_'
+    #    print('exec_')
     #    self.make_dialog()
     #    qt.QDialog.exec_(self)
 

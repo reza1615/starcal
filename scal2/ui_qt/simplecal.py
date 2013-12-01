@@ -86,7 +86,7 @@ class SimpleCal(qt.QWidget):
       return core.weekDayName[(i+core.firstWeekDay)%7]
   ########################################################################
   def buildStatus(self, year, month, addCache=True):
-    #print 'Building cache (%s, %s)'%(year, month)
+    #print('Building cache (%s, %s)'%(year, month))
     s = MonthStatus()#s = []
     s.year = year
     s.month = month
@@ -145,7 +145,7 @@ class SimpleCal(qt.QWidget):
     if addCache:
       ## Clean Cache
       n = len(self.months)
-      #print 'Cache size: %s'%n
+      #print('Cache size: %s'%n)
       if n >= self.maxCache:
         keys = sorted(self.months.keys())
         if keys[n/2] < (year, month):
@@ -157,7 +157,7 @@ class SimpleCal(qt.QWidget):
           if rm==self.today[:2]:
             rm = keys[-2]
         #if rm != (year, month):
-        #print 'Removing cache (%s, %s)'%(rm[0], rm[1])
+        #print('Removing cache (%s, %s)'%(rm[0], rm[1]))
         self.months.pop(rm)
     try:#### for memory emhancement
       del self.months[(year, month)]
@@ -370,7 +370,7 @@ class SimpleCal(qt.QWidget):
       self.emit(qc.SIGNAL('dayChange'))
       self.cal.repaint()
   def keyPressEvent(self, event):## Arrow keys dosent work!!???????????
-    #print event.key(), event.text()
+    #print(event.key(), event.text())
     pass
   def getDate(self):
     '''

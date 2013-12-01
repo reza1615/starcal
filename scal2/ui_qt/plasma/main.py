@@ -157,12 +157,12 @@ class StarCalApplet(MainWin):
         self.tooltipMgr.registerWidget(self.papplet.applet)
         self.tooltipContent = PyKDE4.plasma.Plasma.ToolTipContent(self.name, '')
     def trayClicked(self):
-        #print 'trayClicked', self.tbutton.isChecked()
+        #print('trayClicked', self.tbutton.isChecked())
         #self.emit('main-show')
         #while gtk.events_pending():
         #    gtk.main_iteration_do(False)
         if self.tbutton.isChecked():
-            #print self.papplet.applet.contentsRect().topLeft()##??????????????????
+            #print(self.papplet.applet.contentsRect().topLeft()##??????????????????)
             #if ui.winX==0 and ui.winY==0:##??????????????????
             #ui.winX = self.papplet.x()
             #ui.winY = self.papplet.y()
@@ -276,7 +276,7 @@ class StarCalPlasmaApplet(PyKDE4.plasmascript.Applet):
         ## 0: free size
         ## 1: square (ratio=1)
         ## 2: fixed ratio (of initial size)
-        #print 'ui.traySize', ui.traySize
+        #print('ui.traySize', ui.traySize)
         self.resize(300, ui.traySize+50) ## how to calculate/estimate needed width
     def showConfigurationInterface(self):
         self.sapplet.prefShow()

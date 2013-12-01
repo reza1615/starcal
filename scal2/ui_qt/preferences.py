@@ -440,7 +440,7 @@ class ComboTextPrefItem(PrefItem):
         self.get = w.currentIndex
         self.set = w.setCurrentIndex
     #def set(self, value):
-    #    print 'ComboTextPrefItem.set', value
+    #    print('ComboTextPrefItem.set', value)
     #    self.widget.setCurrentIndex(int(value))
 
 class ComboEntryTextPrefItem(PrefItem):
@@ -966,14 +966,14 @@ class PluginTreeview(qt.QTreeWidget):
             return
         plug.open_configure()
     def rowActivate(self, index):
-        #print 'rowActivate', index.row(), index.column()
+        #print('rowActivate', index.row(), index.column())
         if index.column()==3:## Description Colums
             self.about() #??????
     def add(self):
         ## ???????????????????????????
         ## Reize window to show all texts
         #r, x, y, w, h = self.plugAddTreev.get_column(0).cell_get_size()
-        #print r[2], r[3], x, y, w, h
+        #print(r[2], r[3], x, y, w, h)
         #self.plugAddDialog.resize(w+30, 75 + 30*len(self.plugAddModel))
         ###############
         self.plugAddDialog.exec_()
@@ -1778,7 +1778,7 @@ class PrefDialog(qt.QWidget):
             plug.show_date = (item.checkState(2) == qc.Qt.Checked)
             #except:
             #    core.myRaise(__file__)
-            #    print i, core.plugIndex
+            #    print(i, core.plugIndex)
         core.plugIndex = index
         ######
         first = self.comboFirstWD.currentIndex()
