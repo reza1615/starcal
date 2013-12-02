@@ -841,7 +841,7 @@ class PluginsTextBox(VBox, MainWinItem):
             ui.pluginsTextIsExpanded = False
             ui.saveLiveConf()
             if self.window:
-                self.window.setMinHeightLater()
+                self.get_window().setMinHeightLater()
         self.connect(self.expander, qc.SIGNAL('itemExpanded (QTreeWidgetItem *)'), pluginsTextBoxExpanded)
         self.connect(self.expander, qc.SIGNAL('itemCollapsed (QTreeWidgetItem *)'), pluginsTextBoxCollapsed)
         if self.enableExpander:
@@ -885,7 +885,7 @@ class PluginsTextBox(VBox, MainWinItem):
             self.textview.setText('')## forethought
             self.getWidget().hide()
         if self.window:
-            self.window.setMinHeightLater()
+            self.get_window().setMinHeightLater()
     def setEnableExpander(self, enable):
         #print('setEnableExpander', enable)
         if enable:

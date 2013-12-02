@@ -207,7 +207,7 @@ class StarCalendarScreenlet(screenlets.Screenlet):
         return True
 
     def update_buttons(self):
-        x, y = self.window.get_pointer()
+        x, y = self.get_window().get_pointer()
         x /= (2*self.scale)
         y /= (2*self.scale)
         al_last = self.__buttons_alpha
@@ -231,7 +231,7 @@ class StarCalendarScreenlet(screenlets.Screenlet):
     def init_buttons(self):
         if self.__buttons_pixmap:
             del self.__buttons_pixmap
-        self.__buttons_pixmap = gtk.gdk.Pixmap(self.window.window, int(self.width
+        self.__buttons_pixmap = gtk.gdk.Pixmap(self.get_window().window, int(self.width
             * (2*self.scale)), int(self.height * (2*self.scale)), -1)
         ctx = self.__buttons_pixmap.cairo_create()
         self.clear_cairo_context(ctx)
