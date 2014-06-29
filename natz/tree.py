@@ -3,10 +3,11 @@
 import os
 import os.path
 from collections import OrderedDict
-from .directory import infoDir
 
-infoDirL = list(os.path.split(infoDir))
+import _winreg as wreg
 
+
+'''
 def _addZoneNode(parentDict, zone, zoneNamesLevel):
     path = '/' + os.path.join(*tuple(infoDirL + zone))
     name = zone[-1]
@@ -56,4 +57,38 @@ def getZoneInfoTree():
     #    zoneNamesList += sorted(levelNames)
     #from pprint import pprint ; pprint(zoneTree)
     return zoneTree
+'''
+
+
+def getSubKeys(key):
+    i = 0
+    while True:
+        try:
+            asubkey_name = wreg.EnumKey(key, i)
+        except WindowsError:
+            break
+        else:
+            subkey = wreg.OpenKey(key, asubkey_name)
+            yield subkey
+            i += 1
+
+
+def getZoneInfoTree():
+    aReg = wreg.ConnectRegistry(None, wreg.HKEY_LOCAL_MACHINE)
+    rootKey = wreg.OpenKey(aReg, r'SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones')
+    for subkey in getSubKeys(rootKey):
+        tz_display = wreg.QueryValueEx(subkey, 'Display')[0]
+        tz_std = wreg.QueryValueEx(subkey, 'Std')[0]
+        tz_dst = wreg.QueryValueEx(subkey, 'Dlt')[0]
+        print tz_display, tz_std, tz_dst
+        
+
+
+
+
+if __name__=='__main__':
+    getZoneInfoTree()
+
+
+
 
