@@ -2779,6 +2779,9 @@ msgid "Time zone is invalid"
 msgstr ""
 "منطقهٔ زمانی نامعتبر است"
 
+msgid "Invalid Time Zone: %s"
+msgstr ""
+"منطقهٔ زمانی نامعتبر: %s"
 
 
 
