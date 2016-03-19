@@ -1,3 +1,5 @@
+from scal2.locale_man import tr as _
+
 from scal2.ui_gtk import *
 
 class DirectionComboBox(gtk.ComboBox):
