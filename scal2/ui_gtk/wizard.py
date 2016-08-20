@@ -1,4 +1,5 @@
 from scal2.ui_gtk import *
+from scal2.ui_gtk.utils import hideList
 
 class WizardWindow(gtk.Window):
     stepClasses = []
@@ -17,8 +18,9 @@ class WizardWindow(gtk.Window):
             pack(self.vbox, step, 1, 1)
         self.stepIndex = 0
         ####
-        self.buttonBox = gtk.HButtonBox(spacing=15)
+        self.buttonBox = gtk.HButtonBox()
         self.buttonBox.set_layout(gtk.BUTTONBOX_END)
+        self.buttonBox.set_spacing(15)
         self.buttonBox.set_border_width(15)
         pack(self.vbox, self.buttonBox)
         ####
