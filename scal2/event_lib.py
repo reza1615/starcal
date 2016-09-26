@@ -2259,8 +2259,18 @@ class LargeScaleEvent(Event):## or MegaEvent? FIXME
     def setJd(self, jd):
         self.start = jd_to(jd, self.mode)[0]//self.scale
     def calcOccurrence(self, startJd, endJd):
-        myStartJd = iceil(to_jd(self.scale*self.start, 1, 1, self.mode))
-        myEndJd = ifloor(to_jd(self.scale*self.getEnd(), 1, 1, self.mode))
+        myStartJd = iceil(to_jd(
+            int(self.scale*self.start),
+            1,
+            1,
+            self.mode,
+        ))
+        myEndJd = ifloor(to_jd(
+            int(self.scale*self.getEnd()),
+            1,
+            1,
+            self.mode,
+        ))
         return TimeRangeListOccurrence.newFromStartEnd(
             max(
                 self.getEpochFromJd(myStartJd),
