@@ -556,7 +556,7 @@ calTypes.update()
 
 licenseText = _('licenseText')
 if licenseText in ('licenseText', ''):
-    licenseText = open('%s/license'%rootDir).read()
+    licenseText = open('%s/license-dialog'%rootDir).read()
 
 aboutText = _('aboutText')
 if aboutText in ('aboutText', ''):
