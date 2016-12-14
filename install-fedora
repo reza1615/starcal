@@ -14,9 +14,9 @@ dnf install rpm-build || exit 1
 
 myPath="$0"
 if [ "${myPath:0:2}" == "./" ] ; then
-    myPath=$PWD${myPath:1}
+	myPath=$PWD${myPath:1}
 elif [ "${myPath:0:1}" != "/" ] ; then
-    myPath=$PWD/$myPath
+	myPath=$PWD/$myPath
 fi
 
 
@@ -50,16 +50,16 @@ requires_str=$(printf " %s" "${requires[@]}") ; requires_str=${requires_str:2}
 
 
 
-echo "Name:     $pkgName
-Version:        $version
-Release:        1
-Summary:        A full-featured international calendar writen in Python
+echo "Name:		$pkgName
+Version:		$version
+Release:		1
+Summary:		A full-featured international calendar writen in Python
 
-Group:          User Interface/Desktops
-License:        GPLv3+
-URL:            http://ilius.github.io/starcal
-Requires:       $requires_str
-BuildArch:      noarch
+Group:			User Interface/Desktops
+License:		GPLv3+
+URL:			http://ilius.github.io/starcal
+Requires:		$requires_str
+BuildArch:		noarch
 
 %description
 StarCalendar is a full-featured international calendar writen in Python,
@@ -83,12 +83,12 @@ and Indian National calendars, as well as common english(Gregorian) calendar
 pkgPath=`rpmbuild -bb $pkgName.spec | grep -o /usr/src/packages/RPMS/.*rpm`
 
 if [ -z $pkgPath ] ; then
-    exit 1
+	exit 1
 fi
 
 if [ ! -f $pkgPath ] ; then
-    echo "Package file $pkgPath does not exit"
-    exit 1
+	echo "Package file $pkgPath does not exit"
+	exit 1
 fi
 
 echo "Package created in \"$pkgPath\", installing"
