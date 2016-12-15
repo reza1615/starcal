@@ -19,6 +19,7 @@
 # or /usr/share/licenses/common/GPL3/license.txt on ArchLinux
 
 import sys
+import atexit
 import os
 from os.path import dirname
 sys.path.insert(0, dirname(dirname(dirname(__file__))))
@@ -34,7 +35,6 @@ from scal2.ui_gtk.utils import CopyLabelMenuItem
 import appindicator
 
 class IndicatorStatusIconWrapper(appindicator.Indicator):
-    imPath = join(tmpDir, 'starcal2-indicator-%s.png'%os.getuid())## FIXME
     def __init__(self, mainWin):
         self.mainWin = mainWin
         appindicator.Indicator.__init__(
@@ -47,6 +47,7 @@ class IndicatorStatusIconWrapper(appindicator.Indicator):
         #self.set_attention_icon("new-messages-red")
         ######
         self.create_menu()
+        self.imPath = ''
     '''
     def create_menu_simple(self):
         menu = gtk.Menu()
@@ -87,10 +88,17 @@ class IndicatorStatusIconWrapper(appindicator.Indicator):
     def set_from_pixbuf(self, pbuf):
         ## https://bugs.launchpad.net/ubuntu/+source/indicator-application/+bug/533439
         #pbuf.scale_simple(22, 22, gtk.gdk.INTERP_HYPER)
-        pbuf.save(self.imPath, 'png')
-        self.set_from_file(self.imPath)
-    #def __del__(self):
-    #    os.remove(self.imPath)
+        fname = APP_NAME + '-indicator-%s' % os.getuid()
+        # to make the filename unique, otherwise it won't change in KDE Plasma
+        # fname += '-%s' % now()
+        fname += '-%s' % hash(pbuf)
+        # how to get hash of image data, not object? FIXME
+        fpath = join(tmpDir, fname + '.png')
+        self.imPath = fpath
+        pbuf.save(fpath, 'png')
+        self.set_from_file(fpath)
+        atexit.register(os.remove, fpath)
+        # or use tempfile? FIXME
     is_embedded = lambda self: True ## FIXME
     def set_visible(self, visible):## FIXME
         pass
