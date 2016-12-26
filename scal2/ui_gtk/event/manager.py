@@ -1278,6 +1278,7 @@ class EventManagerDialog(gtk.Dialog, MyDialog, ud.BaseCalObj):## FIXME
         self.insertGroupTree(path[0], group)
         if expanded:
             self.treev.expand_row(path, False)
+        self.treev.set_cursor(path)
     def groupBulkEditFromMenu(self, menu, group, path):
         from scal2.ui_gtk.event.bulk_edit import EventsBulkEditDialog
         dialog = EventsBulkEditDialog(group)
