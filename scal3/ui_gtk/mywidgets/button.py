@@ -18,40 +18,48 @@ class ConButtonBase:
 		###
 		self.connect('pressed', self.onPress)
 		self.connect('released', self.onRelease)
-	doTrigger = lambda self: self.emit('con-clicked')
+
+	def doTrigger(self):
+		return self.emit('con-clicked')
+
 	def onPress(self, widget, event=None):
 		self.pressTm = now()
 		self.remain = True
 		self.doTrigger()
 		timeout_add(ui.timeout_initial, self.onPressRemain, self.doTrigger)
+
 	def onPressRemain(self, func):
-		if self.remain and now()-self.pressTm>=ui.timeout_repeat/1000.0:
+		if self.remain and now() - self.pressTm >= ui.timeout_repeat / 1000:
 			func()
-			timeout_add(ui.timeout_repeat, self.onPressRemain, self.doTrigger)
+			timeout_add(
+				ui.timeout_repeat,
+				self.onPressRemain,
+				self.doTrigger,
+			)
+
 	def onRelease(self, widget, event=None):
 		self.remain = False
 
 
 @registerSignals
 class ConButton(gtk.Button, ConButtonBase):
-	signals =[
+	signals = [
 		('con-clicked', []),
 	]
+
 	def __init__(self, *args, **kwargs):
 		gtk.Button.__init__(self, *args, **kwargs)
 		ConButtonBase.__init__(self)
 
 
-
-
-if __name__=='__main__':
+if __name__ == '__main__':
 	win = gtk.Dialog(parent=None)
 	button = ConButton('Press')
-	button.connect('con-clicked', lambda obj: sys.stdout.write('%.4f\n'%now()))
+	button.connect(
+		'con-clicked',
+		lambda obj: print('%.4f\tcon-clicked' % now())
+	)
 	pack(win.vbox, button, 1, 1)
 	win.vbox.show_all()
 	win.resize(100, 100)
 	win.run()
-
-
-
