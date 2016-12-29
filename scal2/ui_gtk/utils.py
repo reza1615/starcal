@@ -179,6 +179,23 @@ def get_menu_width(menu):
     return menu.size_request()[0]
 
 
+def get_pixbuf_hash(pbuf):
+    import hashlib
+    md5 = hashlib.md5()
+
+    def save_func(chunkBytes, unknown):
+        md5.update(chunkBytes)
+        return True
+
+    pbuf.save_to_callback(
+        save_func,
+        'bmp',  # type, name of file format
+        {},  # options, dict
+        None,  # user_data
+    )
+    return md5.hexdigest()
+
+
 class IdComboBox(gtk.ComboBox):
     def set_active(self, _id):
         ls = self.get_model()
